@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 730px;
+				height: 454px;
+				border: 2px solid red ;
+				margin: 100px auto;
+				position: relative;
+			}
+			ul{
+				width: 730px;
+				height: 454px;
+				list-style: none;
+			}
+			li{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			li:nth-child(n+2){
+				display: none;
+			}
+			p{
+				width: 200px;
+				height: 30px;
+				border: 1px solid green;
+				position: absolute;
+				bottom: 50px;
+				right: 100px;
+			}
+			span{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				background: yellow;
+				line-height:30px;
+				text-align: center;
+				margin-left: 10px;
+				color: white;
+			}
+			.bj{
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<ul>
+				<li><img src="img/1.jpg"/></li> <!-- 下标 0-->
+				<li><img src="img/2.jpg"/></li>	 <!--下标 1-->
+				<li><img src="img/3.jpg"/></li><!--下标 2-->
+				<li><img src="img/4.jpg"/></li><!--下标 3-->
+			</ul>
+			<p>
+				<span class="bj">1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+			</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var lis=document.getElementsByTagName('li');
+		var spans=document.getElementsByTagName('span');
+		var div=document.getElementById('div');
+		var num=0;
+		function fun(){
+			for (var i=0;i<lis.length;i++) {
+				lis[i].style.display='none';
+				spans[i].className='';//清空span标签所有类名
+			}
+			num++;//将num从0变成1，并且无限的累加1，默认显示了第一张图，所以跳过第一张，从第二张开始
+			if (num == lis.length) {//判断num不能超过数组的长度，否则会报错
+				num=0;
+			}
+			lis[num].style.display='block';
+			spans[num].className='bj';//给指定标签加上类名
+		}
+		var timer= setInterval(fun,1000);
+		
+		div.onmouseover=function(){
+			//鼠标移入事件
+			clearInterval(timer);
+		}
+		div.onmouseout=function(){
+			//鼠标移出事件
+			timer= setInterval(fun,1000);//清楚完之后，必须从新附值，不然无效
+		}
+		//  鼠标移入数字时显示，对应图片
+		for(var j=0;j<spans.length;j++){
+			spans[j].a=j;  //上一个函数的变量无法直接在本函数使用
+			//this
+			spans[j].onmouseover=function(){
+				   ////this指的是事件的触发者
+				for (var i=0;i<lis.length;i++) {
+					lis[i].style.display='none';
+					spans[i].className='';
+				}
+				lis[this.a].style.display='block';
+				spans[this.a].className='bj';
+			}
+		}
+		spans[j].onmouseout=function(){
+			num=this.num;
+		}
+	</script>
+</html>
