@@ -1,0 +1,70 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#box{
+	width: 250px;
+	height: 200px;
+	margin: 100px auto;
+	position: relative;
+	overflow: hidden;
+}
+ul{
+	list-style: none;
+}
+#tu{
+	width: 1300px;
+	height: 200px;
+	position: absolute;
+}
+#tu>li{
+	width: 250px;
+	height: 200px;
+	float: left;
+}
+#tu>li>img{
+	width: 250px;
+	height: 200px;
+}
+#shu{
+	width: 250px;
+	height: 10px;
+	position: absolute;
+	top: 180px;
+}
+#shu>li{
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	border-radius: 5px ;
+	float: left;
+	background-color:  #787878;
+	opacity: 0.5;
+	margin-left: 10px;
+	cursor: pointer;
+}
+#shu .active{
+    background-color: red;
+    opacity: 1;
+}
+#shu>li:hover{
+    background: tomato;
+    opacity: 1;
+    color: white;
+    cursor: pointer;
+}
+#jt{
+	display: none;
+	position: absolute;
+	top: 90px;
+	cursor: pointer;
+}
+#jt>li{
+	float: left;
+	background: #959595;
+	color: aqua;
+}
+#right{
+	position: absolute;
+	left: 239px;
+}
